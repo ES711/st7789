@@ -6,44 +6,6 @@ hint template
 ignore this block
 ********************/
 
-static uint32_t g_fac_us = 0; 
-
-void delay_us(uint32_t nus)
-{
-    uint32_t ticks;
-    uint32_t told, tnow, tcnt = 0;
-    uint32_t reload = SysTick->LOAD;       
-    ticks = nus * g_fac_us;              
-	
-    told = SysTick->VAL;          
-    while (1)
-    {
-        tnow = SysTick->VAL;
-        if (tnow != told)
-        {
-            if (tnow < told)
-            {
-                tcnt += told - tnow;     
-            }
-            else
-            {
-                tcnt += reload - tnow + told;
-            }
-            told = tnow;
-            if (tcnt >= ticks) 
-            {
-                break;      
-            }
-        }
-    }
-
-} 
-
-void delay_ms(uint16_t nms)
-{
-    delay_us((uint32_t)(nms * 1000));     
-}
-
 /*******************
 send any thing to st7789 by spi 
 i.e. cmd, data...etc
@@ -156,19 +118,19 @@ void LCD_Init(void)
 {
 	//reset st7789
 	LCD_RES_Clr();
-	delay_ms(50);
+	HAL_Delay(50);
 	LCD_RES_Set();
-	delay_ms(50);
+	HAL_Delay(50);
 	
 	//open back light 
 	LCD_BLK_Set();
-	delay_ms(50);
+	HAL_Delay(50);
 	
 	LCD_CS_Clr();
 	//disable sleep
 	LCD_WR_REG(0x11);
 	LCD_WR_REG(0x11);
-	delay_ms(50);
+	HAL_Delay(50);
 	
 	//************* Start Initial Sequence **********// 
 	LCD_WR_REG(0x36);

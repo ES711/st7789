@@ -67,7 +67,7 @@ void taskBlank(void *pvParm){
 	while(1){
 		HAL_GPIO_TogglePin(GPIOC, LED_Pin);
 		
-		vTaskDelay(50);
+		vTaskDelay(100);
 	}
 }
 
@@ -92,7 +92,7 @@ void taskST7789(void *pvParm){
 				break;
 		}
 		
-		vTaskDelay(1000);
+		//vTaskDelay(1000);
 	}
 }
 /* USER CODE END 0 */

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [st7789\st7789.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image st7789\st7789.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Fri Feb 16 23:06:21 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6190004: Last Updated: Sat Feb 17 21:49:06 2024
 <BR><P>
 <H3>Maximum Stack Usage =        168 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -669,7 +669,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[98]"></a>HAL_GPIO_Init</STRONG> (Thumb, 422 bytes, Stack size 44 bytes, stm32f4xx_hal_gpio.o(.text.HAL_GPIO_Init))
@@ -796,10 +797,11 @@ Global Symbols
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPicture
 </UL>
 
-<P><STRONG><a name="[94]"></a>LCD_Init</STRONG> (Thumb, 2198 bytes, Stack size 16 bytes, lcd_init.o(.text.LCD_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LCD_Init &rArr; LCD_Writ_Bus
+<P><STRONG><a name="[94]"></a>LCD_Init</STRONG> (Thumb, 2088 bytes, Stack size 16 bytes, lcd_init.o(.text.LCD_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = LCD_Init &rArr; HAL_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
+<LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Writ_Bus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -932,11 +934,10 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text.main)
 </UL>
-<P><STRONG><a name="[66]"></a>taskST7789</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, main.o(.text.taskST7789))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = taskST7789 &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick
+<P><STRONG><a name="[66]"></a>taskST7789</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, main.o(.text.taskST7789))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = taskST7789 &rArr; LCD_ShowPicture &rArr; LCD_Address_Set &rArr; LCD_Writ_Bus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowPicture
-<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text.main)
 </UL>
@@ -1052,8 +1053,7 @@ Global Symbols
 <LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vListInsert
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskResumeAll
 </UL>
-<BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskST7789
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskBlank
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;taskBlank
 </UL>
 
 <P><STRONG><a name="[c0]"></a>vTaskInternalSetTimeOutState</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, tasks.o(.text.vTaskInternalSetTimeOutState))
