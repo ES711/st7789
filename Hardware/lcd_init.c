@@ -13,7 +13,7 @@ i.e. cmd, data...etc
 void LCD_Writ_Bus(uint8_t dat) 
 {	
 	//LCD_CS_Clr();
-	//cmd length -> 1byte
+	//cmd length -> 8byte
 	for(uint8_t i=0;i<8;i++)
 	{			  
 		LCD_SCLK_Clr();

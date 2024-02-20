@@ -92,7 +92,7 @@ void taskST7789(void *pvParm){
 				break;
 		}
 		
-		//vTaskDelay(1000);
+		vTaskDelay(1000);
 	}
 }
 /* USER CODE END 0 */
